@@ -19,3 +19,19 @@
   - *Motion Artifacts:* Because the heart is always beating, 2D slices can appear blurred if the "gating" (timing) of the MRI was not perfectly synced with the heartbeat.
   - *Legacy Annotations:* The ground truth contours were created in 2009. Medical imaging standards for what constitutes the "edge" of the heart muscle have evolved since then.
 
+## [1. Carotid Ultrasound Images](https://www.kaggle.com/datasets/orvile/carotid-ultrasound-images)
+- The Carotid Ultrasound Images dataset is a specialized collection of B-mode ultrasound scans focused on the Common Carotid Artery (CCA). It is primarily used to develop and evaluate automated segmentation algorithms, which are crucial for calculating Intima-Media Thickness (IMT) and assessing cardiovascular risk.
+- This dataset was originally published by Agata Momot on Mendeley Data and later hosted on Kaggle. The images were acquired using a Mindray UMT-500Plus machine with an L13-3s linear probe from a study group of 11 subjects examined on both the left and right sides of the neck.
+- **Type of Imaging Data:** Ultrasound (B-mode) - Common Carotid Artery (CCA).
+- **Available Classes or Labels:**
+  - This is a **segmentation-focused dataset** containing two primary categories of files:
+    - **US Images:** 1,100 raw grayscale ultrasound frames (100 images per subject).
+    - **Expert Mask Images:** 1,100 corresponding binary masks where the carotid artery lumen and walls have been manually traced by technicians and verified by clinical experts.
+  - The "labels" are pixel-level annotations used to distinguish the **Arterial Structure** from the surrounding **Background/Tissue**.
+- **Dataset Imbalance:**
+  - **Image-to-Mask Ratio:** Perfectly balanced at a 1:1 ratio (1,100 raw images vs. 1,100 masks).
+  - **Subject Level:** There is a notable subject-level limitation as the data is derived from only **11 subjects**. This lack of broad demographic diversity can lead to model overfitting on specific anatomical patterns.
+- **Challenges:**
+  - *Speckle Noise:* Like all B-mode ultrasound, the images contain inherent "speckle" (granular noise) that can obscure the fine boundaries between the vessel wall and the lumen.
+  - *Annotation Subjectivity:* Although verified by experts, manual segmentation of the carotid artery is subject to inter-observer variability, especially in frames where the artery wall is poorly defined due to low contrast.
+  - *Anatomical Variance:* Because the dataset only features 11 individuals, a model may struggle to generalize to patients with significant arterial plaque, stenosis, or unusual vascular branching.
